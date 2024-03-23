@@ -20,6 +20,8 @@ app.use(express.json())
 
 // rutas
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/users', require('./routes/users'))
+
 // TODO Auth // Crear, Login, renew
 
 
