@@ -4,7 +4,8 @@ const router = Router()
 
 const {getUsers} = require('../controllers/user')
 const { validateJWT } = require('../middlewares/validate-jwt')
+const { validateRole } = require('../middlewares/validate-role')
 
-router.get('/', validateJWT, getUsers)
+router.get('/', [validateJWT, validateRole], getUsers)
 
 module.exports = router

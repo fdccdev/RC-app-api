@@ -11,11 +11,13 @@ const router = Router()
 const {createUser, login} = require('../controllers/auth')
 const { validate } = require('../middlewares/fieldValidate')
 const { validateJWT } = require('../middlewares/validate-jwt')
+const {validateRole} = require('../middlewares/validate-role')
 
 router.post(
     '/create', 
     [ // middlewares
         validateJWT,
+        validateRole,
         check('name', 'El nombre es obligatorio').not().isEmpty(),
         check('email_corp', 'Debe escribir un email válido').isEmail(),
         check('password', 'El password es obligatorio').not().isEmpty(),

@@ -64,10 +64,9 @@ const login = async (req, res = response) => {
     }
 
     // Generar JWT
-    const token = await generateJwt(userExist.id, userExist.name)
+    const token = await generateJwt(userExist.id, userExist.name, userExist.active)
 
     res.status(200).json({
-      state: 'active',
       uid: userExist.id,
       name: userExist.name,
       token
@@ -80,14 +79,7 @@ const login = async (req, res = response) => {
       msg: 'Comuniquese con el administrador!',
     })
   }
-
-  res.json({
-    state: 'active',
-    msg: 'login',
-  })
 }
-
-
 
 module.exports = {
   createUser,
